@@ -4,17 +4,17 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        old = None
-        record = {}
+        max_sub = None # 记录当前最大值
+        cur = None # 记录连接端最大值
 
-        for index, num in enumerate(nums):
-            for i in range(index+1):
-                if i not in record:
-                    record[i] = 0
-                record[i] += num
-                if old is None:
-                    old = record[i]
-                elif record[i] > old:
-                    old = record[i]
-        return old
+        for i in nums:
+            if max_sub is None:
+                max_sub = i
+            if cur is None:
+                cur = i
+            else:
+                cur = max(cur+i, i)
+                if cur > max_sub:
+                    max_sub = cur
 
+        return max_sub

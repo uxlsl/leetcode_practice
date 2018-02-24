@@ -4,10 +4,15 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
-        x = 0
-        for i in range(len(prices)):
-            for j in range(i+1, len(prices)):
-                y = prices[j] - prices[i]
-                if x < y:
-                    x = y
-        return x
+        if len(prices) == 0:
+            return 0
+        val = 0
+        x = prices[0] # 记录当前区间最低值
+
+        for i in prices[1:]:
+            if x > i:
+                x = i
+            val = max(val, i-x)
+
+        return val
+

@@ -71,7 +71,7 @@
 则返回 [1, 3, 3, 1]。
 
 
-## 思路
+### 思路
 
 1. 再原有解法上，加多一层
 2. 不断修改原来的行
@@ -86,6 +86,29 @@
 你可以假设 nums1有足够的空间（空间大小大于或等于m + n）来保存 nums2 中的元素。在 nums1 和 nums2 中初始化的元素的数量分别是 m 和 n。
 
 
-## 思路
+### 思路
 
 由于是合并二个有序数组, 假设v1是插入的第个有序数组的第一个位置，v2就肯定在v1后面!
+
+
+## 最少爬楼梯代价
+
+On a staircase, the i-th step has some non-negative cost cost[i] assigned (0 indexed).
+
+Once you pay the cost, you can either climb one or two steps. You need to find minimum cost to reach the top of the floor, and you can either start from the step with index 0, or the step with index 1.
+
+Example 1:
+Input: cost = [10, 15, 20]
+Output: 15
+Explanation: Cheapest is start on cost[1], pay that cost and go to the top.
+Example 2:
+Input: cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]
+Output: 6
+Explanation: Cheapest is start on cost[0], and only step on 1s, skipping cost[3].
+Note:
+cost will have a length in the range [2, 1000].
+Every cost[i] will be an integer in the range [0, 999].
+
+
+### 思路
+加一思想!

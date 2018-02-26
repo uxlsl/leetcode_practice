@@ -126,3 +126,12 @@ Every cost[i] will be an integer in the range [0, 999].
 
 ### 思路
 注意操作链表的顺序
+
+
+## 翻转链表
+
+反转一个单链表。
+
+
+### 思路
+注意操作链表顺序

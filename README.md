@@ -185,3 +185,5 @@ Given a non-empty array of integers, return the third maximum number in this arr
 
 ### 思路
 保持三个最大数
+参考
+https://www.jianshu.com/p/c4840361199e

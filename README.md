@@ -177,3 +177,11 @@ getMin() -- 检索栈中的最小元素。
 
 ### 思路
 http://blog.jobbole.com/106940/
+
+
+## Third Maximum Number
+Given a non-empty array of integers, return the third maximum number in this array. If it does not exist, return the maximum number. The time complexity must be in O(n).
+
+
+### 思路
+保持三个最大数

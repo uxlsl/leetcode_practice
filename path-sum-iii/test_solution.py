@@ -9,4 +9,4 @@ def test_solution():
                 TreeNode(3, TreeNode(3), TreeNode(-2))),
             TreeNode(-3, None, TreeNode(11)))
 
-    assert s.pathSum(tree, 8) == 3
+    assert s.pathSum(tree, 8) == 2

@@ -1,13 +1,18 @@
+import collections
+
 class Solution(object):
-    def _pathSum(self, root, sum, record):
+    def _pathSum(self, root, cur, sum, record):
         if root is None:
-            return
-        record[0].append(record[0][-1]+root.val)
-        if record[0][-1] - sum in record[0]:
-            record[1] += 1
-        self._pathSum(root.left, sum, record)
-        self._pathSum(root.right, sum, record)
-        record[0].pop()
+            return 0
+        cur += root.val
+        result = record[cur - sum]
+        record[cur] += 1
+        result += self._pathSum(root.left, cur, sum, record)
+        result += self._pathSum(root.right, cur, sum, record)
+        record[cur] -= 1
+        if record[cur] == 0:
+            del record[cur]
+        return result
 
 
     def pathSum(self, root, sum):
@@ -16,6 +21,6 @@ class Solution(object):
         :type sum: int
         :rtype: int
         """
-        record = [[0], 0]
-        self._pathSum(root, sum, record)
-        return record[1]
+        record = collections.defaultdict(int)
+        record[0] = 1
+        return self._pathSum(root, 0, sum, record)

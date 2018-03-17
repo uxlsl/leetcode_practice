@@ -306,3 +306,11 @@ For example, the lowest common ancestor (LCA) of nodes 2 and 8 is 6. Another exa
 
 + 利用bst的特性
 + 二分法
+
+
+
+## Find Smallest Letter Greater Than Target
+
+### 解法
+
+如果大于马上返回，没有则返回第一个

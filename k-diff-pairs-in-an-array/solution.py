@@ -5,11 +5,29 @@ class Solution:
         :type k: int
         :rtype: int
         """
-        nums = sorted(nums)
-        count = 0
-        last = None
-        for i,v in enumerate(nums):
-            if last != v and v + k in nums[i+1:]:
-                count += 1
-            last = v
-        return count
+        if k < 0:
+            return 0
+        from collections import defaultdict
+        m = defaultdict(int)
+        for i in nums:
+                m[i] += 1
+
+        result = set()
+        for i in nums:
+
+            m[i] -= 1
+            m[i-k] -= 1
+            if m[i] >= 0 and m[i-k] >= 0:
+                result.add((i-k, i))
+            m[i] += 1
+            m[i-k] += 1
+
+            m[i] -= 1
+            m[i+k] -= 1
+            if m[i] >= 0 and m[i+k] >= 0:
+                result.add((i, i+k))
+            m[i] += 1
+            m[i+k] += 1
+ 
+        return len(result)
+

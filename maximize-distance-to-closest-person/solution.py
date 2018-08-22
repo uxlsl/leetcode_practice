@@ -29,7 +29,6 @@ class Solution:
                     r.append(None)
 
         r = list(reversed(r))
-        p = -1
         v = 0
         for i in range(len(seats)):
             if l[i] is None and r[i] is not None:
@@ -41,6 +40,5 @@ class Solution:
             else:
                 x = min(l[i], r[i])
             if v < x:
-                p = i
                 v = x
-        return p
+        return v

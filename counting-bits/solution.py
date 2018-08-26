@@ -4,6 +4,7 @@ class Solution:
         :type num: int
         :rtype: List[int]
         """
+        # 可优化 
         results = []
 
         for i in range(num+1):

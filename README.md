@@ -341,3 +341,7 @@ For example, the lowest common ancestor (LCA) of nodes 2 and 8 is 6. Another exa
 
 ## 最长回文串
 通过排序求得规律得出
+
+
+## 奇偶链表
+通过双指针解

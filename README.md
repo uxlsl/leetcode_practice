@@ -359,3 +359,4 @@ For example, the lowest common ancestor (LCA) of nodes 2 and 8 is 6. Another exa
 思路先解出基本计算器ii,然后用基本计算器ii的解法,小修改
 提示,并出不包括括号的表达式
 
+思路2:通过stack保存碰到*括号的结果在)时弹出处理

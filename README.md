@@ -363,3 +363,6 @@ For example, the lowest common ancestor (LCA) of nodes 2 and 8 is 6. Another exa
 
 ## 两两交换链表中的节点
 增加哨兵节点
+
+## 长度最小的子数组
+维护二个子数组

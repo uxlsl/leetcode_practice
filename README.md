@@ -366,3 +366,6 @@ For example, the lowest common ancestor (LCA) of nodes 2 and 8 is 6. Another exa
 
 ## 长度最小的子数组
 维护二个子数组
+
+## 员工重要性
+这个和找朋友类似

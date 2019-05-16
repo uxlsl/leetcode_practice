@@ -7,7 +7,7 @@ class Node(object):
         self.next = next
 
     def __repr__(self):
-        return 'Node({})-{}'.format(self.val,self.next)
+        return 'Node({}-{})-{}'.format(self.key, self.val,self.next)
 
 
 class LRUCache(object):
@@ -27,10 +27,21 @@ class LRUCache(object):
         """
         if key in self._dic:
             o = self._dic[key]
+            if self._head != o:
+                p = o.pre
+                q = o.next
+                if p is not None:
+                    p.next = q
+                if q is not None:
+                    q.pre = p
+                tmp = self._head
+                self._head = o
+                self._head.pre = None
+                self._head.next = tmp
+                tmp.pre = self._head
             return o.val
         else:
             return -1
-
 
     def put(self, key, value):
         """
@@ -41,13 +52,16 @@ class LRUCache(object):
         if key in self._dic:
             o = self._dic[key]
             o.val = value
-            p = o.pre
-            q = o.next
-            if p is not None:
-                p.next = q
-            if q is not None:
-                q.pre = p
-            self._head = o
+            if self._head != o:
+                p = o.pre
+                q = o.next
+                if p is not None:
+                    p.next = q
+                if q is not None:
+                    q.pre = p
+                    self._head.pre = o
+                    self._head,o.next = o,self._head
+                    o.pre = None
             return
 
         if self._head is None:
@@ -59,12 +73,17 @@ class LRUCache(object):
             while p.next:
                 cur += 1
                 p = p.next
+            last = p
             if cur >= self._capacity:
-                p.pre.next = None
-                del self._dic[p.key]
-                del p
-            n = Node(key, value)
-            n.next = self._head
-            self._head.pre = n
-            self._head = n
-            self._dic[key] = n
+                if last.pre:
+                    last.pre.next = None
+                del self._dic[last.key]
+                if self._head == last:
+                    self._head = None
+                del last
+            new_node = Node(key, value)
+            self._dic[key] = new_node
+            new_node.next = self._head
+            if self._head:
+                self._head.pre = new_node
+            self._head = new_node

@@ -19,17 +19,15 @@ class Solution(object):
         if k == 0:
             return []
         result = []
-        stack = [(0,nums[0])]
-        for index,value in enumerate(nums[1:]):
-            if stack[-1][1] < value:
-                while stack:
-                    if stack[-1][1] < value:
+        stack = []
+        for index, value in enumerate(nums, 0):
+            if stack:
+                if stack[0][0] == index - k:
+                    stack.pop(0)
+                if stack and stack[-1][1] < value:
+                    while stack and stack[-1][1] < value:
                         stack.pop()
-                    else:
-                        stack.append((index, value))
-                        break
-                if len(stack) == 0:
-                    stack.append((index, value))
-            print(stack)
-            result.append(stack[0][1])
+            stack.append((index, value))
+            if index - k + 1 >= 0:
+                result.append(stack[0][1])
         return result

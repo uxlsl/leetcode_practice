@@ -5,22 +5,22 @@ class Solution(object):
         :type amount: int
         :rtype: int
         """
-        cache = {}
-        def f(coins,amount):
-            if amount < 0:
+        if amount == 0:
+            return 0
+        cache = {0:0}
+        l = [0]
+        while True:
+            tmp = []
+            nofound = True
+            for i in l:
+                for coin in coins:
+                    if i + coin not in cache:
+                        if i + coin <  amount:
+                            nofound = False
+                        if i + coin == amount:
+                            return cache[i] + 1
+                        cache[i+coin] = cache[i]+1
+                        tmp.append(i+coin)
+            if nofound:
                 return -1
-            elif amount == 0:
-                return 0
-            if amount in cache:
-                return cache[amount]
-            m = -1
-            for coin in coins:
-                count = f(coins, amount-coin)
-                if count >= 0:
-                    if m > 0:
-                        m = min(count + 1, m)
-                    else:
-                        m = count + 1
-            cache[amount] = m
-            return m
-        return f(coins, amount)
+            l = tmp

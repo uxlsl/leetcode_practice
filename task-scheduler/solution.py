@@ -56,3 +56,16 @@ class Solution(object):
                         results.append(None)
                 results.append(task)
         return len(results)
+
+class Solution(object):
+    def leastInterval(self, tasks, n):
+        """
+        :type tasks: List[str]
+        :type n: int
+        :rtype: int
+        """
+        cnt = collections.Counter(tasks)
+        tmax = max(cnt.values())
+        slots = (tmax - 1) * n
+        tsum = len(tasks)
+        return tsum + max(0, slots + tmax - 1 - sum(n - (n == tmax) for n in cnt.values()))

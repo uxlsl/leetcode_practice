@@ -1,5 +1,5 @@
 class Solution(object):
-    def leastInterval(self, tasks, n):
+    def leastInterval_wrong(self, tasks, n):
         """
         :type tasks: List[str]
         :type n: int
@@ -28,3 +28,31 @@ class Solution(object):
                 results.append('-')
                 length += 1
         return results
+
+    def leastInterval_wrong2(self, tasks, n):
+        """
+        :type tasks: List[str]
+        :type n: int
+        :rtype: int
+        """
+
+        results = []
+
+        for task in tasks:
+            pre_task = None
+            for i in range(len(results)):
+                if results[i] == task:
+                    pre_task = i
+                else:
+                    if results[i] is None and pre_task is None or pre_task and pre_task + n < i:
+                        results[i] = task
+                        break
+                    if pre_task and pre_task + n < i:
+                        results.insert(i,task)
+                        break
+            else:
+                if pre_task is not None:
+                    for _ in range((pre_task +n) - len(results) + 1):
+                        results.append(None)
+                results.append(task)
+        return len(results)

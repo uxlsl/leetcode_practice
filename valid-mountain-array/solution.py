@@ -22,4 +22,21 @@ class Solution(object):
             else:
                 i += 1
         return use
+class Solution(object):
+    def validMountainArray(self, A):
+        """
+        :type A: List[int]
+        :rtype: bool
+        """
 
+        length = len(A)
+
+        if length < 3 or A[0] >= A[1]:
+            return False
+
+        index = 1
+        while index < length - 1 and A[index - 1] < A[index]:
+            index += 1
+        while index < length and A[index - 1] > A[index]:
+            index += 1
+        return index == length

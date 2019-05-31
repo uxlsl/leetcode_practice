@@ -1,3 +1,5 @@
+# leetcode 896
+# https://leetcode-cn.com/problems/monotonic-array
 class Solution(object):
     def isMonotonic(self, A):
         """

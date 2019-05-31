@@ -13,3 +13,6 @@ class Solution(object):
             if A[i:] + A[:i] == B:
                 return True
         return False
+
+    def rotateString(self, A, B):
+        return len(A) == len(B) and B in A + A

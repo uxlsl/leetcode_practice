@@ -1,3 +1,4 @@
+# 二数求模
 class Solution(object):
     def numPairsDivisibleBy60(self, time):
         """

@@ -10,5 +10,8 @@ class Solution:
             m[i] += 1
             if m[i] == 2:
                 a = i
-        nums = sorted(m.keys())
-        return a
+
+        for i in range(1,len(nums)+1):
+            if i not in m:
+                return a, i
+

@@ -16,7 +16,7 @@ class Solution(object):
             return 0
         else:
             total =  self.rangeSumBST(root.left, L, R) + self.rangeSumBST(root.right, L, R)
-            if L < root.val < R:
+            if L <= root.val <= R:
                 total += root.val
             return total
 

@@ -18,7 +18,7 @@ class Solution:
         else:
             return False
         n = len(s)
-        can_break = [False] * len(n+1)
+        can_break = [False] * (n+1)
         can_break[0] = True
 
         for i in range(1, len(s)+1):

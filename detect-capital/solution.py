@@ -1,3 +1,4 @@
+# 读懂题目,匹配条件
 class Solution(object):
     def detectCapitalUse(self, word):
         """

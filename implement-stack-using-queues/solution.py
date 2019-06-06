@@ -4,7 +4,7 @@ class MyStack(object):
         """
         Initialize your data structure here.
         """
-	self.data = []
+        self.data = []
 
     def push(self, x):
         """

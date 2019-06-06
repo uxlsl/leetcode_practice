@@ -5,22 +5,27 @@ class Solution(object):
         :type wordDict: List[str]
         :rtype: List[str]
         """
-        def f(s, path, word_set, results):
-            if s == '':
-                results.append(list(path))
-                return
+        from collections import defaultdict
+        def f(path, res):
             word = ''
             i = 0
-            while i < len(s):
-                word +=s[i]
-                if word in word_set:
+            while i < max_word and i < len(res):
+                word += res[i]
+                if word in wordDict:
                     path.append(word)
-                    f(s[i+1:])
+                    mem[''.join(path)].append(' '.join(path))
+                    f(path, res[i+1:])
                     path.pop()
                 i += 1
-
-        results = []
+        if wordDict:
+            max_word = max(len(i) for i in wordDict)
+        else:
+            max_word = len(s)
         word_set = set(wordDict)
+        word = ''
+        mem = defaultdict(list) # 字符串对应的可能列表
         path = []
-        f(s,path, word_set, results)
-        return [' '.join(i) for i in results]
+
+        f(path, s)
+
+        return mem[s]

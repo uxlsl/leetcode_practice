@@ -1,5 +1,5 @@
 class Solution(object):
-    def wordBreak(self, s, wordDict):
+    def wordBreak1(self, s, wordDict):
         """
         :type s: str
         :type wordDict: List[str]
@@ -29,3 +29,25 @@ class Solution(object):
         f(path, s)
 
         return mem[s]
+
+    def wordBreak(self, s, wordDict):
+        """
+        :type s: str
+        :type wordDict: List[str]
+        :rtype: List[str]
+        """
+        count = 0
+        def f(s, i, wordDict):
+            nonlocal count
+            count += 1
+            if len(s) <= i:
+                return True
+            word = ''
+            while i < len(s):
+                word += s[i]
+                if word in wordDict:
+                    return f(s, i+1, wordDict)
+                i += 1
+            else:
+                return False
+        f(s, 0, wordDict)

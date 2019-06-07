@@ -10,12 +10,14 @@ class Solution(object):
             count = 0
             result = ''
             for c in s:
-                if c in m:
-                    result += str(m[c])
-                else:
+                if c not in m:
                     m[c] = count
                     count += 1
+                yield str(m[c])
 
             return result
 
-        return change(s) == change(t)
+        for x,y in zip(change(s), change(t)):
+            if x != y:
+                return False
+        return True

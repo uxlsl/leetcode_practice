@@ -1,3 +1,5 @@
+# 在同构字符串的算法中修改
+
 class Solution(object):
     def wordPattern(self, pattern, str1):
         """

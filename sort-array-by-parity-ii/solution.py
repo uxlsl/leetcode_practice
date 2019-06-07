@@ -9,16 +9,15 @@ class Solution(object):
         """
         odd = []
         even = []
-        for i in A:
+        for i in sorted(A):
             if i % 2 == 0:
                 even.append(i)
             else:
                 odd.append(i)
 
         result = []
-        for i,j in zip(odd,even):
+        for i,j in zip(even,odd):
             result.append(i)
             result.append(j)
 
         return result
-

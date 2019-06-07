@@ -1,3 +1,7 @@
+
+# leetcode 441
+# https://leetcode-cn.com/problems/arranging-coins/
+# 等差数列求根，也可以使用二分法查找
 class Solution(object):
     def arrangeCoins(self, n):
         """

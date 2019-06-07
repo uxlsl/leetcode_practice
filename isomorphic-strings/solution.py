@@ -5,16 +5,17 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
-        record = set()
-        t = list(t)
-        for i1,v1 in enumerate(s):
-            for i2,v2 in enumerate(t[i1:]):
-                if v1 == v2:
-                    pass
+        def change(s):
+            m = {}
+            count = 0
+            result = ''
+            for c in s:
+                if c in m:
+                    result += str(m[c])
                 else:
-                    if i2 in record:
-                        return False
-                    else:
-                        t[i2] = v1
-                        record.add(i2)
-        return s == ''.join(t)
+                    m[c] = count
+                    count += 1
+
+            return result
+
+        return change(s) == change(t)

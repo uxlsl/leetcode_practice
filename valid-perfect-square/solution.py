@@ -1,3 +1,4 @@
+# 可使用二分法找
 class Solution(object):
     def isPerfectSquare(self, num):
         """

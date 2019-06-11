@@ -1,3 +1,8 @@
+# leetcode 707
+# https://leetcode-cn.com/problems/design-linked-list/
+#  注意index的合法性
+
+
 class Node(object):
     def __init__(self, val, next=None):
         self.val = val

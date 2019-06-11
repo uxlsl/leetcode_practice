@@ -6,6 +6,7 @@ class Solution(object):
         """
         import math
         # 使用math提高性能
+        # TODO 使用范围缩进
         z = int(math.sqrt(c))
         for x in range(0,z+1):
             y = int(math.sqrt(c - x*x))

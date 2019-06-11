@@ -4,9 +4,11 @@ class Solution(object):
         :type c: int
         :rtype: bool
         """
-        z = int(c**0.5)
-        for x in range(1,z):
-            y = int((c - x*x)**0.5)
+        import math
+        # 使用math提高性能
+        z = int(math.sqrt(c))
+        for x in range(0,z+1):
+            y = int(math.sqrt(c - x*x))
             if x*x + y * y == c:
                 return True
         else:

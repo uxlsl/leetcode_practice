@@ -1,5 +1,7 @@
 # leetcode 949
 # https://leetcode-cn.com/problems/largest-time-for-given-digits/
+# 也可以使用排列组合,列下所有可能,然后匹配条件
+
 
 class Solution(object):
     def largestTimeFromDigits(self, A):

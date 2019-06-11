@@ -21,15 +21,15 @@ class Solution(object):
             return 0
         info = {}
         for employee in employees:
-            info[employee[0]] = employee
+            info[employee.id] = employee
 
         score = 0
         stack = [id]
 
         while stack:
             id = stack.pop(0)
-            score  += info[id][1]
-            stack += info[id][2]
+            score  += info[id].importance
+            stack += info[id].subordinates
 
         return score
 

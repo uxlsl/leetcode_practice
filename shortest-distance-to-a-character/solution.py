@@ -1,3 +1,6 @@
+# leetcode
+# 左右更新结果
+
 class Solution(object):
     def shortestToChar(self, S, C):
         """

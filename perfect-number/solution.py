@@ -36,3 +36,4 @@ class Solution(object):
             k = num / i
             i += 1
         return num == count
+

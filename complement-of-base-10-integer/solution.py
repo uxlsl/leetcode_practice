@@ -14,3 +14,13 @@ class Solution(object):
                 lst.append(1)
             N = N >> 1
         return sum(j*2**i for i,j in enumerate(lst))
+
+
+class Solution(object):
+    def bitwiseComplement(self, N):
+        """
+        :type N: int
+        :rtype: int
+        """
+        x = len(bin(N)) - 2
+        return 2**x - N - 1

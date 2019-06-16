@@ -36,6 +36,7 @@ class Solution(object):
             print('#'*10)
 
         def f(grid,x1,y1,x2,y2):
+            # 相同就为一个节点，否则有四个节点构成
             if is_same(grid,x1,y1,x2,y2):
                 return Node(grid[x1][y1] == 1,True,None,None,None,None)
             else:

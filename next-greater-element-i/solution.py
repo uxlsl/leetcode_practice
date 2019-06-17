@@ -11,11 +11,22 @@ class Solution(object):
         for i in range(len(nums2)-1):
             m[nums2[i]] = nums2[i+1]
 
+        seen = set()
         ret = []
 
-        for i in nums1:
+        for i,j in zip(nums1,nums2):
+            seen.add(j)
             if i in m:
-                ret.append(m[i])
+                while True:
+                    if i in m:
+                        if i not in seen:
+                            ret.append(m[i])
+                            break
+                        i = m[i]
+                    else:
+                        ret.append(-1)
+                        break
+
             else:
                 ret.append(-1)
 

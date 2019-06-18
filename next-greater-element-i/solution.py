@@ -5,25 +5,31 @@ class Solution(object):
         :type nums2: List[int]
         :rtype: List[int]
         """
-        nums2 = sorted([(i,v) for i,v in enumerate(nums2)],key=lambda x:x[1])
         m = {}
+        stack = []
 
-        for i in range(len(nums2)-1):
-            m[nums2[i][1]] = nums2[i+1]
+        for num in nums2:
+            if stack:
+                a = stack[-1]
+                if a < num:
+                    while stack:
+                        a = stack.pop()
+                        if a < num:
+                            m[a] = num
+                        else:
+                            stack.append(a)
+                            break
+                else:
+                    stack.append(num)
+            stack.append(num)
 
         ret = []
-        for index,v in enumerate(nums1):
-            if v in m:
-                while v in m:
-                    if m[v][0] > index:
-                        ret.append(m[v][1])
-                        break
-                    v = m[v][1]
-                else:
-                    ret.append(-1)
 
-
+        for num in nums1:
+            if num in m:
+                ret.append(m[num])
             else:
                 ret.append(-1)
 
         return ret
+

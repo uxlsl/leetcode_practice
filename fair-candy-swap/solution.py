@@ -18,7 +18,7 @@ class Solution(object):
 
         ma = {}
         mb = {}
-
+        B = set(B)
         for i in A:
             j = target - total_a + i
             if j in B:

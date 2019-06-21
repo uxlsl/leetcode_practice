@@ -1,3 +1,9 @@
+# leetcode
+# https://leetcode-cn.com/problems/longest-harmonious-subsequence/
+# 解法
+# 排序,组差别正好为1的解,然后求最大的
+
+
 from collections import Counter
 
 class Solution(object):

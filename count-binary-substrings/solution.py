@@ -10,18 +10,22 @@ class Solution(object):
         """
         # start + end ,start 等于1or0,end 等于1 or 0,比较数量
         count = 0
-        for i in range(0, len(s)-1):
+        i = 0
+        while i < len(s):
             c = s[i]
             x = 1
             y = 0
-            i += 1
-            while i < len(s):
-                if s[i] == c:
+            j = i + 1
+            while j < len(s):
+                if s[j] == c:
                     x += 1
                 else:
                     y += 1
                     if x == y:
-                        count += 1
+                        count += x
+                        i += x
                         break
-                i+=1
+                j += 1
+            else:
+                i += 1
         return count

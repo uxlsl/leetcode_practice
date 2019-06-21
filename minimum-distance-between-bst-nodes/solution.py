@@ -4,7 +4,7 @@
 # 1
 # 排序,然后求彼此的差
 # 2
-# 中序打印,就是排序结果
+# 中序打印,就是排序结果,利用了python3 yield from
 
 # Definition for a binary tree node.
 # class TreeNode(object):

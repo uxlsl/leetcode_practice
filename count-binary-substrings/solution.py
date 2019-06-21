@@ -2,6 +2,7 @@
 # https://leetcode-cn.com/problems/count-binary-substrings/
 # 一些重复出现的子串要计算它们出现的次数
 
+
 class Solution(object):
     def countBinarySubstrings(self, s):
         """
@@ -9,23 +10,25 @@ class Solution(object):
         :rtype: int
         """
         # start + end ,start 等于1or0,end 等于1 or 0,比较数量
+        m = {"0": "1", "1": "0"}
         count = 0
         i = 0
         while i < len(s):
             c = s[i]
-            x = 1
+            x = 0
             y = 0
-            j = i + 1
-            while j < len(s):
-                if s[j] == c:
-                    x += 1
-                else:
-                    y += 1
-                    if x == y:
-                        count += x
-                        i += x
-                        break
+            j = i
+            while j < len(s) and s[j] == c:
+                x += 1
                 j += 1
-            else:
-                i += 1
+            while j < len(s) and s[j] == m[c]:
+                y += 1
+                j += 1
+
+            if x <= y:
+                count += x
+            else:  #  x > y:
+                count += y
+            i += x
+
         return count

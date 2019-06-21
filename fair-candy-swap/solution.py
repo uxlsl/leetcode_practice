@@ -16,8 +16,6 @@ class Solution(object):
         total_b = sum(B)
         target = (total_a + total_b) // 2
 
-        ma = {}
-        mb = {}
         B = set(B)
         for i in A:
             j = target - total_a + i

@@ -1,6 +1,7 @@
 class Solution(object):
     def minMoves(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+        sum = 0
+        minmum = min(nums)
+        for i in nums:
+            sum += i-minmum
+        return sum

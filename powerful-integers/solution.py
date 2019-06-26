@@ -1,3 +1,6 @@
+# leetcode
+# https://leetcode-cn.com/problems/powerful-integers/
+# 解法,遍历
 class Solution(object):
     def powerfulIntegers(self, x, y, bound):
         """

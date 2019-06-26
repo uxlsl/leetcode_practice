@@ -1,3 +1,5 @@
+# 解法,穷举
+
 class Solution(object):
     def ares(self,p1,p2,p3):
         x1,y1 = p1

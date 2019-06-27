@@ -1,4 +1,3 @@
-import time
 class Solution(object):
     def reachNumber(self, target):
         """

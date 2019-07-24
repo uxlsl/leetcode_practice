@@ -1,9 +1,9 @@
 # Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
 
 class Solution(object):
     def buildTree(self, inorder, postorder):
@@ -17,8 +17,8 @@ class Solution(object):
                 v = postorder.pop()
                 node = TreeNode(v)
                 i = inorder.index(v)
-                node.left = f(inorder, postorder, start, i - 1)
                 node.right = f(inorder, postorder, i + 1, end)
+                node.left = f(inorder, postorder, start, i - 1)
                 return node
             return None
         return f(inorder, postorder, 0, len(inorder) - 1)

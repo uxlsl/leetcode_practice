@@ -16,17 +16,23 @@ class Solution(object):
         :type q: TreeNode
         :rtype: TreeNode
         """
+        def f(root,p, path):
+            if root.val == p.val:
+                return True
+            for node in [root.left, root.right]:
+                if node:
+                    path.append(node)
+                    if f(node, p, path):
+                        return True
+                    path.pop()
+            return False
 
-        pq = root
-        while True:
-            if pq.val < p.val and pq.val < q.val:
-                pq = pq.left
-            elif pq.val > p.val and pq.val > q.val:
-                pq = pq.right
-            elif ((pq.val < p.val and pq.val > q.val)
-                 or (pq.val > p.val and pq.val < q.val)):
-                return pq
-            elif pq.val == p.val:
-                return p
-            elif pq.val == q.val:
-                return q
+        p_path = [root]
+        f(root, p, p_path)
+        q_path = [root]
+        f(root, q, q_path)
+        for i,j in zip(p_path, q_path):
+            if i.val != j.val:
+                break
+            last = i
+        return last

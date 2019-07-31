@@ -2,6 +2,7 @@
 # https://leetcode-cn.com/problems/all-possible-full-binary-trees/
 # 递归解决
 # 类似格雷码
+# 考虑条件
 # Definition for a binary tree node.
 
 import copy

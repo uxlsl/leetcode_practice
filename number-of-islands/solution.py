@@ -2,6 +2,7 @@
 # https://leetcode-cn.com/problems/number-of-islands/
 # 结果至少有一个
 # 多少个连续的1
+# 用深度算法
 
 import copy
 

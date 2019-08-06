@@ -10,17 +10,10 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        can = [False] * len(nums)
-        # 表示第一个位置能够到达
-        can[0] = True
+        lastPos = len(nums) - 1
+        for i in range(lastPos,-1,-1):
+            if i + nums[i] >= lastPos:
+                lastPos = i
 
-        for i in range(len(nums)):
-            if can[-1]:
-                return True
-            if can[i]:
-                for j in range(nums[i]+1):
-                    if i+j<len(nums):
-                        can[i+j] = True
-            else:
-                break
-        return can[-1]
+        return lastPos == 0
+

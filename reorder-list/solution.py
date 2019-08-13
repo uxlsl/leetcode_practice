@@ -1,3 +1,8 @@
+# leetcode
+# https://leetcode-cn.com/problems/reorder-list/
+# 解法
+# 链表的中点,翻转链表，二指针
+
 # Definition for singly-linked list.
 # class ListNode(object):
 #     def __init__(self, x):

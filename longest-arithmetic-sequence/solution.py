@@ -1,4 +1,3 @@
-import pprint
 class Solution(object):
     def longestArithSeqLength(self, A):
         """
@@ -26,3 +25,18 @@ class Solution(object):
                 else:
                     m[diff].append([j, i])
         return ret
+
+
+class Solution:
+    def longestArithSeqLength(self, A):
+        # 以每个元素作为等差数列终点，计算出该数列长度，选择出最大值返回即可。
+        ret,arr=1,[{} for i in range(len(A))]
+        for i in range(1,len(A)):
+            for j in range(i):
+                d=A[i]-A[j]
+                n=arr[j].get(d,1)+1
+                arr[i][d]=n
+            ret=max(ret,max(arr[i].values()))
+        print(arr)
+        return ret
+

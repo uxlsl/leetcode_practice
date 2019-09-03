@@ -5,17 +5,16 @@ class Solution:
         :rtype: List[List[int]]
         """
 
-        def f(l, nums, results):
-            if len(nums) > 0:
-                for i in range(len(nums)):
-                    v = nums.pop(i)
-                    l.append(v)
-                    f(l, nums, results)
-                    nums.insert(i, v)
-                    l.pop()
-            else:
-                results.append(list(l))
+        def backtrack(first=0):
+            if first == n:
+                output.append(nums[:])
 
-        results = []
-        f([], nums, results)
-        return results
+            for i in range(first, n):
+                nums[first],nums[i] = nums[i], nums[first]
+                backtrack(first+1)
+                nums[first],nums[i] = nums[i], nums[first]
+
+        n = len(nums)
+        output = []
+        backtrack()
+        return output

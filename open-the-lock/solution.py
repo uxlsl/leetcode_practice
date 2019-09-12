@@ -1,3 +1,7 @@
+# leetcode
+# https://leetcode-cn.com/problems/open-the-lock/
+# bfs解法
+
 class Solution(object):
     def openLock(self, deadends, target):
         """

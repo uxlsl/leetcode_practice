@@ -1,4 +1,3 @@
-# 识别终点
 
 class Solution(object):
     def networkDelayTime(self, times, N, K):
@@ -22,7 +21,7 @@ class Solution(object):
             for x in X:
                 for y in to[x[0]]:
                     cost = x[1] + y[2]
-                    if y[1] in record and record[y[1]] < cost:
+                    if y[1] in record and record[y[1]] <= cost:
                         continue
                     record[y[1]] = cost
                     Y.append((y[1], cost))

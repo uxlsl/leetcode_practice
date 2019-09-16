@@ -23,24 +23,27 @@ class Solution(object):
         count = 0
 
         while X:
-            print(X, count)
             Y = []
             for item in X:
                 x, y = getCoord(board, item[0])
                 for i in range(1,7):
                     num = item[0] + i
+                    if num == H*L:
+                        return count
                     if visited[num-1]:
                         continue
                     visited[num-1] = True
-                    if num == H*L:
-                        return count
                     pos = getCoord(board, num)
                     if board[pos[0]][pos[1]] >0:
                         #  蛇
                         if pos[0] == x and not item[1]:
+                            if board[pos[0]][pos[1]] == H*L:
+                                return count
                             Y.append((board[pos[0]][pos[1]], True, item[2]))
                         # 梯
                         elif not item[2]:
+                            if board[pos[0]][pos[1]] == H*L:
+                                return count
                             Y.append((board[pos[0]][pos[1]], item[1], True))
                     else:
                         Y.append((num, item[1], item[2]))

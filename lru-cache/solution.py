@@ -1,47 +1,24 @@
-
-class Node(object):
-    def __init__(self, key, value, pre=None, next=None):
-        self.key = key
-        self.val = value
-        self.pre = pre
-        self.next = next
-
-    def __repr__(self):
-        return 'Node({}-{})-{}'.format(self.key, self.val,self.next)
-
-
 class LRUCache(object):
 
     def __init__(self, capacity):
         """
         :type capacity: int
         """
-        self._dic = {}
-        self._capacity = capacity
-        self._head = None
+        self.__capacity = capacity
+        self.__q = []
+        self.__dic = {}
 
     def get(self, key):
         """
         :type key: int
         :rtype: int
         """
-        if key in self._dic:
-            o = self._dic[key]
-            if self._head != o:
-                p = o.pre
-                q = o.next
-                if p is not None:
-                    p.next = q
-                if q is not None:
-                    q.pre = p
-                tmp = self._head
-                self._head = o
-                self._head.pre = None
-                self._head.next = tmp
-                tmp.pre = self._head
-            return o.val
-        else:
+        if key not in self.__dic:
             return -1
+        self.__q.remove(key)
+        self.__q.insert(0,key)
+        return self.__dic[key]
+
 
     def put(self, key, value):
         """
@@ -49,41 +26,10 @@ class LRUCache(object):
         :type value: int
         :rtype: None
         """
-        if key in self._dic:
-            o = self._dic[key]
-            o.val = value
-            if self._head != o:
-                p = o.pre
-                q = o.next
-                if p is not None:
-                    p.next = q
-                if q is not None:
-                    q.pre = p
-                    self._head.pre = o
-                    self._head,o.next = o,self._head
-                    o.pre = None
-            return
-
-        if self._head is None:
-            self._head = Node(key, value)
-            self._dic[key] = self._head
-        else:
-            cur = 1
-            p = self._head
-            while p.next:
-                cur += 1
-                p = p.next
-            last = p
-            if cur >= self._capacity:
-                if last.pre:
-                    last.pre.next = None
-                del self._dic[last.key]
-                if self._head == last:
-                    self._head = None
-                del last
-            new_node = Node(key, value)
-            self._dic[key] = new_node
-            new_node.next = self._head
-            if self._head:
-                self._head.pre = new_node
-            self._head = new_node
+        if key in self.__dic:
+            self.__q.remove(key)
+        if len(self.__q) == self.__capacity:
+            k = self.__q.pop()
+            del self.__dic[k]
+        self.__dic[key] = value
+        self.__q.insert(0, key)

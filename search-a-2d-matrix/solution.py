@@ -6,9 +6,9 @@ class Solution(object):
         :rtype: bool
         """
         for i in range(len(matrix)):
-            for j in range(len(matrix[0])):
-                if target == matrix[i][j]:
-                    return True
+            if i == len(matrix) - 1 or matrix[i][0] <= target <= matrix[i + 1][0]:
+                for j in range(len(matrix[0])):
+                    if matrix[i][j] == target:
+                        return True
 
         return False
-

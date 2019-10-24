@@ -16,11 +16,12 @@ class Solution(object):
         m = {}
 
         def isArithmetic(A, i, j):
-            if (i,j-1) in A:
-                if A[(i,j-1)] and A[j-1] - A[j-2] == A[j] - A[j-1]:
+            if (i,j-1) in m:
+                if m[(i,j-1)] and A[j-1] - A[j-2] == A[j] - A[j-1]:
                     m[(i,j)] = True
                 else:
                     m[(i,j)] = False
+                return False
             else:
                 d = A[i + 1] - A[i]
                 for x in range(i + 1, j):

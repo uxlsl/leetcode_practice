@@ -13,29 +13,12 @@ class Solution(object):
         :type A: List[int]
         :rtype: int
         """
-        m = {}
+        dp = [0]*len(A)
+        total = 0
 
-        def isArithmetic(A, i, j):
-            if (i,j-1) in m:
-                if m[(i,j-1)] and A[j-1] - A[j-2] == A[j] - A[j-1]:
-                    m[(i,j)] = True
-                else:
-                    m[(i,j)] = False
-                return False
-            else:
-                d = A[i + 1] - A[i]
-                for x in range(i + 1, j):
-                    if A[x] != A[x + 1] - d:
-                        m[(i,j)] = False
-                        return False
-                m[(i,j)] = True
-                return True
+        for i in range(2, len(A)):
+            if A[i] - A[i-1] == A[i-1] - A[i-2]:
+                dp[i] = 1+dp[i-1]
+                total += dp[i]
 
-        # 看划分
-
-        count = 0
-        for i in range(len(A)):
-            for j in range(i +2, len(A)):
-                if isArithmetic(A,i,j):
-                    count += 1
-        return count
+        return total

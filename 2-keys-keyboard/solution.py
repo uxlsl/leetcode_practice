@@ -1,21 +1,21 @@
-import time
 class Solution(object):
     def minSteps(self, n):
         """
         :type n: int
         :rtype: int
         """
-        def f(dp, step, num, clip):
-            time.sleep(1)
-            if num < len(dp):
-                print(step, num, clip)
-                if step < dp[num]:
-                    dp[num] = step
-                if clip > 0:
-                    f(dp,step+1, num+clip, clip)
-                f(dp,step+2, num, num)
+        def f(n):
+            if n == 1:
+                return 0
 
-        dp = [0] * (n+1)
-        dp[1] = 1
-        f(dp, 1,1,0)
-        return dp[n]
+            lst = []
+            for i in range(2, n//2+1):
+                if n % i == 0:
+                    lst.append(f(n//i) + i + 1)
+                    lst.append(f(i) + n//i)
+            if lst:
+                return min(lst)
+            else:
+                return n
+
+        return f(n)

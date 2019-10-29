@@ -6,21 +6,22 @@ class Solution(object):
         """
 
         def f(nums):
-            cur = nums[0:2]
-            for i in nums[2:]:
-                if cur[-2] > cur[-1]:
-                    if cur[-1] < i:
+            cur = nums[:1]
+            for i in nums[1:]:
+                if len(cur) == 1:
+                    if i != cur[0]:
                         cur.append(i)
-                    else:
-                        cur[-1] = i
                 else:
-                    if cur[-1] > i:
-                        cur.append(i)
+                    if cur[-2] > cur[-1]:
+                        if cur[-1] < i:
+                            cur.append(i)
+                        else:
+                            cur[-1] = i
                     else:
-                        cur[-1] = i
-            if len(cur) == 2:
-                if cur[0] == cur[1]:
-                    return 1
+                        if cur[-1] > i:
+                            cur.append(i)
+                        else:
+                            cur[-1] = i
             return len(cur)
 
         return f(nums)

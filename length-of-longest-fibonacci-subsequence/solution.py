@@ -32,3 +32,24 @@ class Solution(object):
                     max_len = cur
 
         return max_len
+
+    def lenLongestFibSubseq(self, A):
+        """
+        :type A: List[int]
+        :rtype: int
+        """
+        # 解法二
+        # i-j-k
+        from collections import defaultdict
+
+        index = {v:i for i,v in enumerate(A)}
+        X = defaultdict(lambda :2)
+        ret = 2
+
+        for k,v in enumerate(A):
+            for j in range(k):
+                i = index.get(v-A[j], None)
+                if i is not None and i<j:
+                    X[j,k] = X[i,j]+1
+                    ret = max(X[j,k], ret)
+        return ret if ret > 2 else 0

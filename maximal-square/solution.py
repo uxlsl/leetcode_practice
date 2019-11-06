@@ -21,9 +21,7 @@ class Solution(object):
                     m[i, j, 0] = False
         max_l = 0
         L = min(len(matrix), len(matrix[0]))
-
-        # 长度递增
-        for l in range(2, L + 1):
+        for l in range(1, L + 1):
             for i in range(len(matrix)):
                 for j in range(len(matrix[0])):
                     if i + l >= len(matrix) or j + l >= len(matrix[0]):

@@ -4,14 +4,24 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        def f(nums, prev, curpos):
-            if len(nums) == curpos:
-                return 0
-            taken = 0
-            if nums[curpos] > prev:
-                taken = 1 + f(nums, nums[curpos], curpos+1)
+        if len(nums) == 0:
+            return 0
 
-            notaken = f(nums, prev, curpos+1)
-            return max(taken, notaken)
+        max_length = 1
+        for i in range(len(nums)):
+            count = 1
+            cur = nums[i]
+            pre = None
+            for j in range(i+1, len(nums)):
+                if cur < nums[j]:
+                    count += 1
+                    pre = cur
+                    cur = nums[j]
+                elif cur > nums[j]:
+                    if pre is not None:
+                        if pre < nums[j]:
+                            cur = nums[j]
 
-        return f(nums,-1,0)
+            max_length = max(max_length, count)
+
+        return max_length

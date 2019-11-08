@@ -26,6 +26,8 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
+        # sum[i] - sum[j] = k
+        # sum[j] = sum[i] - k
         count = 0
         sum_ = 0
         map_ = {}
@@ -33,8 +35,7 @@ class Solution(object):
 
         for i in nums:
             sum_ += i
-            if sum_ - k in map_:
-                count += map_.get(sum_-k)
+            count += map_.get(sum_-k,0)
             map_[sum_] = map_.get(sum_, 0) + 1
 
         return count

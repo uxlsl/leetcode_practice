@@ -12,41 +12,29 @@ class Solution(object):
         # 考虑pop出来的值
 
         def f(pushed, popped):
-            print(pushed, popped)
             if len(pushed) == 0:
                 return True
+
             stack = []
             while pushed:
                 v = pushed.pop(0)
                 if v == popped[0]:
                     popped.pop(0)
-                    if stack and stack[-1] == popped[0]:
-                        while stack:
-                            i = stack.pop()
-                            j = popped.pop(0)
-                            if i != j:
-                                return False
-                        else:
-                            if f(pushed, popped):
-                                return True
-                            else:
-                                return False
-                    else:
-                        if f(pushed, popped):
-                            while stack:
-                                i = stack.pop()
-                                j = popped.pop(0)
-                                if i != j:
-                                    return False
-                            else:
-                                return True
-                        else:
-                            return False
                 else:
                     stack.append(v)
+
+                # 压进去，马上pop
+                while stack and stack[-1] == popped[0]:
+                    stack.pop()
+                    popped.pop(0)
+
+            stack = stack[::-1]
+            if stack == popped:
+                return True
             else:
                 return False
 
         if len(pushed) != len(popped):
             return False
+
         return f(pushed, popped)

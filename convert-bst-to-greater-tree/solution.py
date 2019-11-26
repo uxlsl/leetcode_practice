@@ -1,5 +1,6 @@
 # leetcode
 # https://leetcode-cn.com/problems/convert-bst-to-greater-tree/
+# 找规律
 # Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, x):

@@ -6,10 +6,10 @@ class Solution(object):
         :rtype: List[int]
         """
         # 超时了
-        arr = [0]*n
+        arr = [0] * n
 
         for book in bookings:
-            for i in range(book[0], book[1]+1):
-                arr[i-1]+=book[2]
+            for i in range(book[0], book[1] + 1):
+                arr[i - 1] += book[2]
 
         return arr

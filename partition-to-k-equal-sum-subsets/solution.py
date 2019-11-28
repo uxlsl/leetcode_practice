@@ -1,5 +1,8 @@
 # leetcode
 # 穷举
+# k个相等的子集
+# 反三
+# k个指定数量的子集
 
 
 class Solution(object):

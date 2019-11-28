@@ -1,26 +1,28 @@
+# leetcode
+# 穷举
+
+
 class Solution(object):
     def canPartitionKSubsets(self, nums, k):
-        """
-        :type nums: List[int]
-        :type k: int
-        :rtype: bool
-        """
-        total = sum(nums)
-        if total % k != 0:
+        target, rem = divmod(sum(nums), k)
+        if rem: return False
+
+        def search(groups):
+            if not nums: return True
+            v = nums.pop()
+            for i, group in enumerate(groups):
+                if group + v <= target:
+                    groups[i] += v
+                    if search(groups): return True
+                    groups[i] -= v
+                if not group: break
+            nums.append(v)
             return False
-        record = [False] * (total + 1)
-        record[total] = True
 
-        for i in nums:
-            for j, v in enumerate(list(record)):
-                if v:
-                    record[j-i] = True
-                for z in range(total//k,total+1,total//k):
-                    print(z)
-                    if not record[z]:
-                        break
-                else:
-                    return True
-            print(i,record)
-        return False
+        nums.sort()
+        if nums[-1] > target: return False
+        while nums and nums[-1] == target:
+            nums.pop()
+            k -= 1
 
+        return search([0] * k)

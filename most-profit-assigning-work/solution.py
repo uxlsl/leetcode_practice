@@ -1,6 +1,8 @@
 # leetcode
 # 一个工人都最多只能安排一个工作，但是一个工作可以完成多次。
 # 优化问题!
+# 官方比这个实现好
+# https://leetcode-cn.com/problems/most-profit-assigning-work/solution/an-pai-gong-zuo-yi-da-dao-zui-da-shou-yi-by-leetco/
 
 
 class Solution(object):

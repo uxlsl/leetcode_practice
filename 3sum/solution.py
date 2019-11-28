@@ -6,14 +6,12 @@ class Solution(object):
         """
         results = []
         nums.sort()
-        print(nums)
         i = 0
         while i < len(nums):
             j = i + 1
             k = len(nums) - 1
             while j < k:
                 v = nums[i] + nums[j] + nums[k]
-                print(i, j, k, v)
                 if v == 0:
                     results.append([nums[i], nums[j], nums[k]])
                     while j < len(nums) - 2 and nums[j] == nums[j + 1]:

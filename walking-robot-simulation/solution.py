@@ -1,27 +1,25 @@
-class Solution:
+# leetcode
+# 考虑障碍物
+# 代码怎样实现障碍物检测.
+
+class Solution(object):
     def robotSim(self, commands, obstacles):
-        """
-        :type commands: List[int]
-        :type obstacles: List[List[int]]
-        :rtype: int
-        """
-        pos = [0,0]
-        d = 90
+        dx = [0, 1, 0, -1]
+        dy = [1, 0, -1, 0]
+        x = y = di = 0
+        obstacleSet = set(map(tuple, obstacles))
+        ans = 0
 
-        for i in commands:
-            if i < 0:
-                if i == -1:
-                    d -= 90
-                elif i == -2:
-                    d += 90
+        for cmd in commands:
+            if cmd == -2:  #left
+                di = (di - 1) % 4
+            elif cmd == -1:  #right
+                di = (di + 1) % 4
             else:
-                if d % 360 == 0:
-                    pos[0] += i
-                elif d %360 ==  90:
-                    pos[1] += i
-                elif d % 360 == 180:
-                    pos[0] -= i
-                elif d % 360 == 270:
-                    pos[1] -= i
+                for k in xrange(cmd):
+                    if (x+dx[di], y+dy[di]) not in obstacleSet:
+                        x += dx[di]
+                        y += dy[di]
+                        ans = max(ans, x*x + y*y)
 
-        return pos[0]*pos[0] + pos[1]*pos[1]
+        return ans

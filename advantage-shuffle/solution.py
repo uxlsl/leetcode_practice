@@ -21,3 +21,28 @@ class Solution(object):
             else:
                 ret.append(N)
         return [i if i != N else A.pop() for i in ret]
+
+    def advantageCount(self, A, B):
+        """
+        :type A: List[int]
+        :type B: List[int]
+        :rtype: List[int]
+        """
+        B = [(i,val) for i,val in enumerate(B)]
+        B = sorted(B, key=lambda x:x[1])
+        res = sorted(A)
+        fail = []
+        A = []
+        for i,val in B:
+            while res:
+                j = res.pop(0)
+                if j > val:
+                    A.append(i)
+                    break
+                else:
+                    fail.append(j)
+            else:
+                break
+        return A
+
+
